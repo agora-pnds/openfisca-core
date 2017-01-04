@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.1.6
+
+* Add `Entity.to_json` method. Used by OpenFisca-Web-API in `/entity` endpoint.
+
 ## 4.1.5
 
 * Enable `extra_params` in formulas with new syntax.
