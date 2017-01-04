@@ -53,6 +53,23 @@ class Entity(object):
         else:
             return self.simulation.calculate(variable_name, period, **parameters)
 
+    # JSON
+
+    @classmethod
+    def to_json(cls):
+        entity_dict = {
+            'key': cls.key,
+            'label': cls.label,
+            'plural': cls.plural,
+            }
+        if cls.is_person:
+            entity_dict['isPersonsEntity'] = cls.is_person
+        else:
+            entity_dict.update({
+                'roles': cls.roles_description,
+                })
+        return entity_dict
+
     # Helpers
 
     def empty_array(self):
