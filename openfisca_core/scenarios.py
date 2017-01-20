@@ -393,6 +393,10 @@ class AbstractScenario(object):
                 test_case, groupless_persons = self.repair(test_case, groupless_persons)
 
             test_case, error = json_to_test.check_each_person_has_entities(test_case, self.tax_benefit_system, state, groupless_persons)
+            if error is not None:
+                return test_case, error
+
+            test_case, error = self.post_process_test_case(test_case, state)
 
             return test_case, error
 
@@ -423,6 +427,14 @@ class AbstractScenario(object):
             Reimplemented by country packages
         """
         return test_case, groupless_persons
+
+
+    def post_process_test_case(self, test_case, state):
+        """
+            Country package custom treatment applied to the test case after the commons ones.
+            Reimplemented by country packages
+        """
+        return test_case, None
 
 
 def extract_output_variables_name_to_ignore(output_variables_name_to_ignore):
