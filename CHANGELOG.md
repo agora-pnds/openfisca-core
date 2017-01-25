@@ -1,5 +1,9 @@
 # Changelog
 
+## 4.2.2
+
+* Always name a `CompactNode`, as otherwise traced simulations crash if a `BAREME` is directly under the root node of the xml parameteres file.
+
 ## 4.2.1
 
   Fix permanent and period size independent variables neutralization
